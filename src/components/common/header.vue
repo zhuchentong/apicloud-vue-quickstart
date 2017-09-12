@@ -1,7 +1,6 @@
 <template>
   <div>
-    asdasdsdfdsfdsf
-    {{test}}
+    <button @click="click">this is  test</button>
   </div>
 </template>
 
@@ -9,7 +8,8 @@
   export default {
     data() {
       return {
-        test:'3434'
+        dataHasLoaded: false,
+        ver: '123123asdasd'
       }
     }
   }

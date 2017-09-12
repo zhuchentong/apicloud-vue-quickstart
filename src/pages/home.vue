@@ -1,5 +1,6 @@
 <template>
   <div>
+    sadfhs
     <button @click="click">this is  test</button> {{ver}}
     <ul v-if="dataHasLoaded">
       <li>引擎版本信息: {{ver}}</li>
