@@ -1,5 +1,6 @@
 <template>
   <div>
+    asdasd
     {{test}}
   </div>
 </template>
@@ -8,7 +9,7 @@
   export default {
     data() {
       return {
-        test:'asxcxcdasd'
+        test:'3434'
       }
     }
   }

@@ -57,12 +57,14 @@ function getEntriesAndChunks() {
  */
 function generateHtmlEntries() {
   chunks.forEach(function (name) {
+    let filename = name.split('/')[name.split('/').length-1]
     var conf = {
-      filename: name + '.html', //生成的html存放路径，相对于path
-      template: 'template.ejs' //html模板路径
+      filename: `${name}.html`, //生成的html存放路径，相对于path
+      template: 'template.ejs', //html模板路径
+      src:`./${filename}.js`
     };
     conf.inject = 'body';
-    conf.chunks = ['common', name];
+    conf.chunks = ['common'];
 
     if (process.env.NODE_ENV === 'production') {
       conf.hash = true;

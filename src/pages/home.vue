@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button @click="click">this is  test</button> {{ver}}
     <ul v-if="dataHasLoaded">
       <li>引擎版本信息: {{ver}}</li>
       <li>系统类型: {{sType}}</li>
@@ -23,6 +24,15 @@
     data() {
       return {
         dataHasLoaded: false,
+        ver: '123123asdasd'
+      }
+    },
+    methods: {
+      click() {
+        api.openWin({
+          name: 'login',
+          url: "http://192.168.3.89:8010/auth/login.html"
+        })
       }
     },
     created() {
