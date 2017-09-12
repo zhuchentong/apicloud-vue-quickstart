@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         dataHasLoaded: false,
         ver: '123123asdasd'

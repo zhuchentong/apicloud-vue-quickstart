@@ -22,36 +22,36 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         dataHasLoaded: false,
         ver: '123123asdasd'
       }
     },
     methods: {
-      click() {
-        api.openWin({
+      click () {
+        this.$api.openWin({
           name: 'login',
-          url: "http://192.168.3.89:8010/auth/login.html"
+          url: 'http://192.168.3.89:8010/auth/login.html'
         })
       }
     },
-    created() {
+    created () {
       console.log('asdassdsd')
-      this.ver = api.version;
-      this.sType = api.systemType;
-      this.sVer = api.systemVersion;
-      this.id = api.deviceId;
-      this.model = api.deviceModel;
-      this.name = api.deviceName;
-      this.cType = api.connectionType;
-      this.winName = api.winName;
-      this.winWidth = api.winWidth;
-      this.winHeight = api.winHeight;
-      this.frameName = api.frameName || '';
-      this.frameWidth = api.frameWidth || '';
-      this.frameHeight = api.frameHeight || '';
-      this.dataHasLoaded = true;
+      this.ver = this.$api.version
+      this.sType = this.$api.systemType
+      this.sVer = this.$api.systemVersion
+      this.id = this.$api.deviceId
+      this.model = this.$api.deviceModel
+      this.name = this.$api.deviceName
+      this.cType = this.$api.connectionType
+      this.winName = this.$api.winName
+      this.winWidth = this.$api.winWidth
+      this.winHeight = this.$api.winHeight
+      this.frameName = this.$api.frameName || ''
+      this.frameWidth = this.$api.frameWidth || ''
+      this.frameHeight = this.$api.frameHeight || ''
+      this.dataHasLoaded = true
     }
   }
 </script>

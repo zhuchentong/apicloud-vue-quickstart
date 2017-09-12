@@ -7,9 +7,9 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
-        test:'3434'
+        test: '3434'
       }
     }
   }

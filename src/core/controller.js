@@ -1,9 +1,15 @@
 import Vue from 'vue'
+import api from '../plugins/api'
+
+import '../assets/styles/api.css'
 
 export default class Controller {
-  constructor(App) {
+  constructor (App) {
     window.apiready = function () {
-      new Vue({
+      // plugins
+      Vue.use(api)
+
+      return new Vue({
         el: '#app',
         render: h => h(App)
       })

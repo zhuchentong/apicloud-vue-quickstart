@@ -1,54 +1,57 @@
-const {
-  join,
-  resolve
-} = require('path');
+// const {join, resolve} = require('path')
+// const webpack = require('webpack')
+const glob = require('glob')
 
-const webpack = require('webpack');
-const glob = require('glob');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+// webpack插件
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
+const baseWebpackConfig = require('./build/webpack.base.conf')
 
 // 入口文件
-let entries = {};
-let chunks = [];
-var baseWebpackConfig = require('./build/webpack.base.conf')
+let entries = {}
+let chunks = []
+let config = Object.assign({}, baseWebpackConfig)
 
-
-getEntriesAndChunks();
-
-var config = Object.assign({}, baseWebpackConfig, {
-  entry: entries
-})
-
-generateHtmlEntries();
-
+// 获取入口文件
+getEntriesAndChunks()
+// 获取页面文件
+generateHtmlEntries()
+// 获取启动主文件
 generateIndexFile()
-console.log(entries)
 
-function generateIndexFile() {
-  entries['index'] = ['./index.js'];
-  chunks.push('index');
+// 添加入口文件配置
+Object.assign(config, {entry: entries})
+
+// 导出配置文件
+module.exports = config
+
+/**
+ * 加载主页面文件
+ */
+function generateIndexFile () {
+  entries['index'] = ['./index.js']
+  chunks.push('index')
 
   config.plugins.push(new HtmlWebpackPlugin({
-    filename: 'index.html', //生成的html存放路径，相对于path
-    template: 'index.html', //html模板路径
+    filename: 'index.html', // 生成的html存放路径，相对于path
+    template: 'index.html', // html模板路径
     chunks: ['common', 'index']
-  }));
+  }))
 }
+
 /**
  * 生成入口文件列表
  */
-function getEntriesAndChunks() {
-  const file_prefix = 'src/entries/'
-  const file_suffix = '.entry.js'
+function getEntriesAndChunks () {
+  const filePrefix = 'src/entries/'
+  const fileSuffix = '.entry.js'
 
   glob.sync('./src/entries/**/*.js').forEach(function (name) {
-    var n = name.slice(name.lastIndexOf(file_prefix) + file_prefix.length, name.length - file_suffix.length);
-    entries[n] = [name];
-    chunks.push(n);
-  });
+    var n = name.slice(name.lastIndexOf(filePrefix) + filePrefix.length, name.length - fileSuffix.length)
+    entries[n] = [name]
+    chunks.push(n)
+  })
 
   // entries['vendor'] = ['vue'];
 }
@@ -56,22 +59,22 @@ function getEntriesAndChunks() {
 /**
  * 生成html文件列表
  */
-function generateHtmlEntries() {
+function generateHtmlEntries () {
   chunks.forEach(function (name) {
     let filename = name.split('/')[name.split('/').length - 1]
     var conf = {
-      filename: `${name}.html`, //生成的html存放路径，相对于path
-      template: 'template.ejs', //html模板路径
+      filename: `${name}.html`, // 生成的html存放路径，相对于path
+      template: 'template.ejs', // html模板路径
       src: `./${filename}.js`
-    };
-    conf.inject = 'body';
-    conf.chunks = ['common'];
+    }
+    conf.inject = 'body'
+    conf.chunks = ['common']
 
     if (process.env.NODE_ENV === 'production') {
-      conf.hash = true;
+      conf.hash = true
     }
-    config.plugins.push(new HtmlWebpackPlugin(conf));
-  });
+    config.plugins.push(new HtmlWebpackPlugin(conf))
+  })
 }
 
 // console.log(config)
@@ -108,9 +111,6 @@ function generateHtmlEntries() {
 //   // console.log(newChunks);
 //   return newChunks;
 // }
-
-module.exports = config;
-
 
 // function getHtmls() {
 //   var htmls = [];
