@@ -1,4 +1,6 @@
 import Controller from '@/core/controller'
 import Login from '@/pages/auth/login'
 
-let controller = new Controller(Login)
+const controller = new Controller(Login)
+
+export default controller

@@ -1,6 +1,5 @@
 <template>
   <div>
-    asdasdsdfdsfdsf
     {{test}}
   </div>
 </template>
@@ -9,8 +8,10 @@
   export default {
     data () {
       return {
-        test: '3434'
+        test: '343asdasdas4'
       }
+    },
+    mounted () {
     }
   }
 </script>

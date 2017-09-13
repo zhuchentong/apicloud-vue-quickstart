@@ -44,15 +44,15 @@ function generateIndexFile () {
  * 生成入口文件列表
  */
 function getEntriesAndChunks () {
-  const filePrefix = 'src/entries/'
-  const fileSuffix = '.entry.js'
+  const filePrefix = 'src/controllers/pages/'
+  const fileSuffix = '.controller.js'
 
-  glob.sync('./src/entries/**/*.js').forEach(function (name) {
+  glob.sync('./src/controllers/pages/**/*.js').forEach(function (name) {
     var n = name.slice(name.lastIndexOf(filePrefix) + filePrefix.length, name.length - fileSuffix.length)
-    entries[n] = [name]
+    entries[n] = ['babel-polyfill', name]
     chunks.push(n)
   })
-
+  console.log(entries)
   // entries['vendor'] = ['vue'];
 }
 

@@ -1,4 +1,6 @@
 import Controller from '@/core/controller'
 import Home from '@/pages/home'
 
-let controller = new Controller(Home)
+const controller = new Controller(Home)
+
+export default controller

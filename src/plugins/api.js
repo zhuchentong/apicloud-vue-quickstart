@@ -3,7 +3,6 @@
  */
 export default {
   install (Vue) {
-    console.log('asdasd')
     Vue.prototype.$api = window.api
   }
 }
