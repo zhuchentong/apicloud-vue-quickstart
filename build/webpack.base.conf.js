@@ -6,15 +6,13 @@ const webpack = require('webpack')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const envConfig = require(`../env/${process.env.ENV || 'dev'}.env`)
 
-console.log(getIpAddress())
-
 module.exports = {
   // devtool: 'cheap-module-source-map',
   output: {
     path: resolve(__dirname, '../dist/'),
     filename: '[name].js',
     // filename: 'script/[id].js',
-    publicPath: process.env.NODE_ENV === 'production' ? '../' : ''
+    publicPath: process.env.NODE_ENV === 'production' ? '../' : '/'
   },
   resolve: {
     // 配置别名，在项目中可缩减引用路径
@@ -111,7 +109,7 @@ module.exports = {
     port: 8010,
     historyApiFallback: false,
     noInfo: true,
-    contentBase: resolve(__dirname, '../dist/'),
+    contentBase: resolve(__dirname, '../dist'),
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8010',
