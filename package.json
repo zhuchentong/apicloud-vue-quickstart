@@ -5,8 +5,10 @@
   "main": "index.js",
   "repository": "http://www.apicloud.com",
   "scripts": {
-    "dev": "webpack --watch | cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "webpack": "webpack --watch",
+    "dev": "cross-env ENV=dev DEBUG=true webpack --watch | cross-env ENV=dev DEBUG=true webpack-dev-server --inline --hot",
+    "dev:local": "cross-env ENV=dev  webpack --watch |  cross-env ENV=dev DEBUG=true webpack-dev-server --inline --hot",
+    "build:dev": "cross-env ENV=dev webpack",
+    "build:prod": "cross-env ENV=prod webpack",
     "sync": "apicloud wifiSync --project ./ --updateAll false",
     "bundle": "webpack --color --progress",
     "bundle_s": "webpack --color --progress && apicloud wifiSync --project ./ --updateAll false",

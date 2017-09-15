@@ -98,8 +98,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': Object.assign(envConfig, {
         IP: `"${getIpAddress()}"`,
-        PORT: `"${process.env.PORT | 8010}"`,
-        DEBUG: `${!process.env.ENV | process.env.ENV === 'dev'}`
+        PORT: `"${process.env.PORT || 8010}"`,
+        ENV: `"${process.env.ENV || 'dev'}"`,
+        DEBUG: `${process.env.DEBUG === 'true'}`
       })
     })
   ],
