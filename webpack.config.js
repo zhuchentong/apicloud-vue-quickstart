@@ -32,7 +32,7 @@ module.exports = config
  * 加载主页面文件
  */
 function generateIndexFile () {
-  entries['index'] = ['./index.js']
+  entries['index'] = ['babel-polyfill', './index.js']
   chunks.push('index')
 
   config.plugins.push(new HtmlWebpackPlugin({
