@@ -37,7 +37,8 @@ function generateIndexFile () {
 
   config.plugins.push(new HtmlWebpackPlugin({
     filename: 'index.html', // 生成的html存放路径，相对于path
-    template: 'index.html' // html模板路径
+    template: 'index.html', // html模板路径
+    chunks: []
   }))
 }
 
