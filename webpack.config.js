@@ -4,9 +4,9 @@ const glob = require('glob')
 
 // webpack插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const baseWebpackConfig = require('./build/webpack.base.conf')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
-const baseWebpackConfig = require('./build/webpack.base.conf')
 
 // 入口文件
 let entries = {}
@@ -36,7 +36,7 @@ function generateIndexFile () {
   config.plugins.push(new HtmlWebpackPlugin({
     filename: 'index.html', // 生成的html存放路径，相对于path
     template: 'index.html', // html模板路径
-    chunks: ['common', 'index']
+    chunks: ['common']
   }))
 }
 
@@ -52,7 +52,6 @@ function getEntriesAndChunks () {
     entries[n] = ['babel-polyfill', name]
     chunks.push(n)
   })
-  console.log(entries)
   // entries['vendor'] = ['vue'];
 }
 
@@ -76,64 +75,3 @@ function generateHtmlEntries () {
     config.plugins.push(new HtmlWebpackPlugin(conf))
   })
 }
-
-// console.log(config)
-
-// const pages = getHtmls();
-
-// pages.forEach(function (pathname) {
-//   // filename 用文件夹名字
-//   let fileBasename = pathname.substring(6, pathname.length - 4);
-//   var conf = {
-//     filename: fileBasename + '.html', //生成的html存放路径，相对于path
-//     template: 'template.ejs', //html模板路径
-//     src: 'src/' + pathname + '.js',
-//     body: require(fileBasename + '.html')
-//   };
-//   var chunk = pathname.substring(6, pathname.length - 4);
-//   if (chunks.indexOf(chunk) > -1) {
-//     conf.inject = 'body';
-//     conf.chunks = ['common', chunk];
-//   }
-//   if (process.env.NODE_ENV === 'production') {
-//     conf.hash = true;
-//   }
-//   config.plugins.push(new HtmlWebpackPlugin(conf));
-// });
-
-// function getCommonChunks(chunks) {
-//   let newChunks = [];
-//   chunks.forEach(function (item) {
-//     if (!item.includes('questions')) {
-//       newChunks.push(item);
-//     }
-//   });
-//   // console.log(newChunks);
-//   return newChunks;
-// }
-
-// function getHtmls() {
-//   var htmls = [];
-//   glob.sync('./src/entries/**/*.html').forEach(function (name) {
-//     var n = name.slice(name.lastIndexOf('src/') + 4, name.length - 5);
-//     htmls.push(n);
-//   });
-//   return htmls;
-// }
-
-// if (process.env.NODE_ENV === 'production') {
-//   module.exports.devtool = '#source-map';
-//   // http://vue-loader.vuejs.org/en/workflow/production.html
-//   module.exports.plugins = (module.exports.plugins || []).concat([
-//     new webpack.DefinePlugin({
-//       'process.env': {
-//         NODE_ENV: '"production"'
-//       }
-//     }),
-//     new webpack.optimize.UglifyJsPlugin({
-//       compress: {
-//         warnings: false
-//       }
-//     })
-//   ]);
-// }

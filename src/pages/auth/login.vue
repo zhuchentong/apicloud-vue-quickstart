@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{test}}
+    {{test}}asdasdasdasdasdsad
   </div>
 </template>
 
@@ -8,7 +8,7 @@
   export default {
     data () {
       return {
-        test: '343asdasdas4'
+        test: 'xxxasdasd'
       }
     },
     mounted () {
