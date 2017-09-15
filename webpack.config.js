@@ -54,7 +54,7 @@ function getEntriesAndChunks () {
     entries[n] = ['babel-polyfill', name]
     chunks.push(n)
   })
-  // entries['vendor'] = ['vue']
+  // entries['vendor'] = ['vue'];
 }
 
 /**

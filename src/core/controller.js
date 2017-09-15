@@ -10,7 +10,6 @@ import filters from '../utils/filters'
  */
 export default class Controller {
   constructor (page) {
-    console.log(1, process.env, 2)
     // 注册page
     this.page = page
     // 监听启动事件
