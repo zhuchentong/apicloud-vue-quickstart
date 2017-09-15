@@ -17,7 +17,7 @@ export default {
         if (!target || typeof target !== 'string' || !router) {
           return
         }
-        console.log(1, target, 2)
+
         // 获取目标页面
         Object.values(router).find(item => item.some(x => {
           if (x.name === target) {
@@ -25,15 +25,14 @@ export default {
             return true
           }
         }))
-        console.log(1, target, 2)
+
         if (!page) {
           page = {
             name: target,
             url: target
           }
         }
-        console.log(1, page, 2)
-        window.alert(`${app.remote}/${page.url}.html`)
+
         if (app.debug) {
           window.api.openWin({
             name: page.name,
