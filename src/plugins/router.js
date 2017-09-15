@@ -10,7 +10,6 @@ export default {
        * 页面跳转
        */
       push (target, params) {
-        console.log(1, target, router, 2)
         // 目标页面对象
         let page = ''
 
