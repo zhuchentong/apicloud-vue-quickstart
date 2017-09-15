@@ -39,7 +39,6 @@ export default {
             url: `${app.remote}/${page.url}.html`
           })
         } else {
-          window.alert(`widget://dist/${page.url}.html`)
           window.api.openWin({
             name: page.name,
             url: `widget://dist/${page.url}.html`
