@@ -2,7 +2,7 @@ const {resolve} = require('path')
 const {getIpAddress} = require('./utils')
 const webpack = require('webpack')
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const envConfig = require(`../env/${process.env.ENV || 'dev'}.env`)
 
@@ -38,11 +38,11 @@ module.exports = {
         // exclude: /node_modules/
     },
     {
-      test: /\.css$/
-      // use: ExtractTextPlugin.extract({
-      //   fallback: 'style-loader',
-      //   use: 'css-loader'
-      // })
+      test: /\.css$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader'
+      })
     },
     {
       test: /\.html$/,
