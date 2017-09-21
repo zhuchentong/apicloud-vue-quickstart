@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Mint from 'mint-ui';
 import plugins from '../plugins'
 import directives from '../utils/directives'
 import filters from '../utils/filters'
@@ -20,6 +21,9 @@ export default class Controller {
    * 启动逻辑
    */
   launch () {
+    // 安装UI
+    Vue.use(Mint)
+
     this.installPlugins()   // 安装插件
     this.installDirectives()   // 安装插件
     this.installFilters()   // 安装插件

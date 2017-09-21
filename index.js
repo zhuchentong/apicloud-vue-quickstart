@@ -1,7 +1,7 @@
 import app from './src/config/app.config'
-const launchPage = 'home.html'
+var launchPage = 'home.html'
 
-const ready = function () {
+var ready = function () {
   // 设置状态条
   window.api.setStatusBarStyle({
     style: 'light'
