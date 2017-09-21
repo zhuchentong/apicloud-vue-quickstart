@@ -3,7 +3,7 @@ import Mint from 'mint-ui';
 import plugins from '../plugins'
 import directives from '../utils/directives'
 import filters from '../utils/filters'
-
+import 'mint-ui/lib/style.css'
 // import '../assets/styles/api.css'
 
 /**
