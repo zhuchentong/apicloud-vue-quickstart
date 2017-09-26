@@ -13,9 +13,12 @@ let entries = {}
 let chunks = []
 let config = baseWebpackConfig
 
-// 获取入口文件
+// 获取window文件
 getEntriesAndChunks()
-// 获取页面文件
+// 获取frame文件
+getFramesAndChunks()
+
+// 生成html文件
 generateHtmlEntries()
 // 获取启动主文件
 generateIndexFile()
@@ -29,7 +32,7 @@ Object.assign(config, {
 module.exports = config
 
 /**
- * 加载主页面文件
+ * 加载入口文件
  */
 function generateIndexFile () {
   entries['index'] = ['babel-polyfill', './index.js']
@@ -43,14 +46,29 @@ function generateIndexFile () {
 }
 
 /**
- * 生成入口文件列表
+ * 生成页面文件
  */
 function getEntriesAndChunks () {
   const filePrefix = 'src/controllers/pages/'
   const fileSuffix = '.controller.js'
 
   glob.sync('./src/controllers/pages/**/*.js').forEach(function (name) {
-    var n = name.slice(name.lastIndexOf(filePrefix) + filePrefix.length, name.length - fileSuffix.length)
+    var n = 'pages/' + name.slice(name.lastIndexOf(filePrefix) + filePrefix.length, name.length - fileSuffix.length)
+    entries[n] = ['babel-polyfill', name]
+    chunks.push(n)
+  })
+  // entries['vendor'] = ['vue'];
+}
+
+/**
+ * 生成frame文件
+ */
+function getFramesAndChunks () {
+  const filePrefix = 'src/controllers/frames/'
+  const fileSuffix = '.controller.js'
+
+  glob.sync('./src/controllers/frames/**/*.js').forEach(function (name) {
+    var n = 'frames/' + name.slice(name.lastIndexOf(filePrefix) + filePrefix.length, name.length - fileSuffix.length)
     entries[n] = ['babel-polyfill', name]
     chunks.push(n)
   })

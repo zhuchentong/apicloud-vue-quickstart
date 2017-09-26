@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Mint from 'mint-ui';
+import Mint from 'mint-ui'
 import plugins from '../plugins'
 import directives from '../utils/directives'
 import filters from '../utils/filters'
@@ -24,14 +24,18 @@ export default class Controller {
     // 安装UI
     Vue.use(Mint)
 
-    this.installPlugins()   // 安装插件
-    this.installDirectives()   // 安装插件
-    this.installFilters()   // 安装插件
+    this.installPlugins() // 安装插件
+    this.installDirectives() // 安装插件
+    this.installFilters() // 安装插件
 
-    return new Vue({
+    const vue = new Vue({
       el: '#app',
       render: h => h(this.page)
     })
+
+    if (this.build) {
+      this.build(this.page, vue)
+    }
   }
 
   /**

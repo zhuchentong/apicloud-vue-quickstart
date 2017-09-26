@@ -9,7 +9,7 @@ var ready = function () {
   // 打开页面
   window.api.openFrame({
     name: 'index',
-    url: app.debug ? `${app.remote}/${launchPage}` : `./${launchPage}`, // 调试时使用
+    url: app.debug ? `${app.remote}/pages/${launchPage}` : `./pages/${launchPage}`, // 调试时使用
     rect: {
       x: 0,
       y: 45,

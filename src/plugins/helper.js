@@ -4,7 +4,6 @@
 export default {
   install (Vue) {
     Vue.prototype.$helper = {
-
     }
   }
 }
